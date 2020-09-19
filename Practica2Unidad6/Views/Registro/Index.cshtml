@@ -1,0 +1,54 @@
+﻿@model IEnumerable <MVC_CRUD_DiplomadoUASD_AJAX.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Usuarios</h2>
+
+<p>
+    @Html.ActionLink("Create New", "SinIn", "Home", null, new { @class = "btn btn-success" })
+</p>
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            Nombres
+        </th>
+        <th>
+            Apellidos
+        </th>
+        <th>
+            Usuario
+        </th>
+        <th>
+            Email
+        </th>
+        <th>Acciones</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink(" ", "Edit", new { id = item.IdUser }, new { @class = "glyphicon glyphicon-edit" })
+                @Html.ActionLink(" ", "Details", new { id = item.IdUser }, new { @class = "glyphicon glyphicon-th-list" })
+                @Html.ActionLink(" ", "Delete", new { id = item.IdUser }, new { @class = "glyphicon glyphicon-trash" })
+            </td>
+        </tr>
+    }
+
+</table>
+

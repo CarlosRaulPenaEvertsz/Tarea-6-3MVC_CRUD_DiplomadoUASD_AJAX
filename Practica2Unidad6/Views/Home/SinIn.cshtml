@@ -1,0 +1,56 @@
+﻿@model MVC_CRUD_DiplomadoUASD_AJAX.Models.SignIn
+
+@{
+    ViewBag.Title = "SinIn";
+}
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="card card-container">
+            <h2 class="panel-title">Registrarse</h2>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @using (Html.BeginForm("SinIn", "Home", FormMethod.Post, new { @class = "form-signin" }))
+            {
+                <div class="form-group">
+                    @Html.TextBoxFor(dl => dl.Name, new { @class = "form-control", @placeholder = "Nombre..." })
+                    @Html.ValidationMessageFor(dl => dl.Name, "", new { @class = "text-danger" })
+                </div>
+
+                <div>
+                    @Html.TextBoxFor(dl => dl.LastName, new { @class = "form-control", @placeholder = "Apellido..." })
+                    @Html.ValidationMessageFor(dl => dl.LastName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.TextBoxFor(dl => dl.UserName, new { @class = "form-control", @placeholder = "Usuario..." })
+                    @Html.ValidationMessageFor(dl => dl.UserName, "", new { @class = "text-danger" })
+                </div>
+
+                <div>
+                    @Html.TextBoxFor(dl => dl.Email, new { @class = "form-control", @placeholder = "Correo electronico..." })
+                    @Html.ValidationMessageFor(dl => dl.Email, "", new { @class = "text-danger" })
+                </div>
+
+                <div>
+                    @Html.PasswordFor(dl => dl.Password, new { @class = "form-control", @placeholder = "Password..." })
+                    @Html.ValidationMessageFor(dl => dl.Password, "", new { @class = "text-danger" })
+                </div>
+
+                if (!string.IsNullOrEmpty(ViewBag.Message))
+                {
+                    <p class="alert-danger">@ViewBag.Message</p>
+                }
+
+                <input type="submit" value="Registrarse" class="btn btn-primary btn-block" />
+
+            }
+
+            @Html.ActionLink(" Log In", "Usuarios", "Home", null, new { @class = "glyphicon glyphicon-user" })
+
+
+        </div>
+    </div>
+</div>
+
